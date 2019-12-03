@@ -68,7 +68,6 @@ def load_subj_data(study_dir, subj_list, file_suffix='.nii.gz', attr_filename=No
     return data_dict
     
 
-
 def omit_targets(ds,omit):
     '''
     Returns ds with specified targets omitted
@@ -80,6 +79,19 @@ def omit_targets(ds,omit):
     for om in omit:
         ds = ds[ds.sa.targets != om]
     return ds
+
+def omit_chunks(ds,omit):
+    '''
+    Returns ds with specified chunks omitted  
+    
+    ds: pymvpa dataset with chunks
+    omit: list of chunks to be omitted
+    '''
+    for om in omit:
+        ds = ds[ds.sa.chunks != om]
+    return ds
+
+
 
 def omit_targets_data(data,omit):
     '''
